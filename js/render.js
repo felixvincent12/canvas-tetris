@@ -1,6 +1,11 @@
-var canvas = document.getElementsByTagName( 'canvas' )[ 0 ];
+/***********************************
+Name: Lei Sing Hong
+Date: 22 March 2018
+Description: This js file is use to draw a game board.
+***********************************/
+var canvas = document.getElementsByTagName( 'canvas' )[ 0 ]; //connect with html canvas tag
 var ctx = canvas.getContext( '2d' );
-var W = 300, H = 600;
+var W = 300, H = 600; //game board weight and height
 var BLOCK_W = W / COLS, BLOCK_H = H / ROWS;
 
 // draw a single square at (x, y)
@@ -24,7 +29,7 @@ function render() {
     }
 
     ctx.fillStyle = 'red';
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = 'black'; //block color
     for ( var y = 0; y < 4; ++y ) {
         for ( var x = 0; x < 4; ++x ) {
             if ( current[ y ][ x ] ) {
@@ -35,4 +40,5 @@ function render() {
     }
 }
 
+//repeat the execution function in 30 milliseconds
 setInterval( render, 30 );

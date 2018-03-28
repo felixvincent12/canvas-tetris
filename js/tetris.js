@@ -1,9 +1,17 @@
+/***********************************
+Name: Desmond Wong Yeh Jong
+Date: 21 March 2018
+Description: This file is the code make the program run.
+***********************************/
+
+//variable
 var COLS = 10, ROWS = 20;
 var board = [];
 var lose;
 var interval;
 var current; // current moving shape
 var currentX, currentY; // position of current shape
+//create the shape such as square 
 var shapes = [
     [ 1, 1, 1, 1 ],
     [ 1, 1, 1, 0,
@@ -119,7 +127,7 @@ function clearLines() {
         }
     }
 }
-
+//press the key to move, rotate, store block or hard drop
 function keyPress( key ) {
     switch ( key ) {
         case 'left':
@@ -173,7 +181,7 @@ function valid( offsetX, offsetY, newCurrent ) {
     }
     return true;
 }
-
+//Start a new game when game over
 function newGame() {
     clearInterval(interval);
     init();
