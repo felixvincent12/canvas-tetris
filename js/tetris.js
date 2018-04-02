@@ -199,7 +199,7 @@ function newGame() {
     init();
     newShape();
     lose = false;
-    interval = setInterval( tick, 25 );
+    interval = setInterval( tick, 250 );
 }
 //function to create button when it is clicked the game will start
 function createHomeStartButton(){
