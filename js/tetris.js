@@ -11,6 +11,7 @@ var lose;
 var interval;
 var current; // current moving shape
 var currentX, currentY; // position of current shape
+var recordID; //variable to record shape
 //create the shape such as square 
 var shapes = [
     [ 1, 1, 1, 1 ],
@@ -35,7 +36,12 @@ var colors = [
 // 4x4 so as to cover the size when the shape is rotated
 function newShape() {
     var id = Math.floor( Math.random() * shapes.length );
-    var shape = shapes[ id ]; // maintain id for color filling
+	//while the previous shape is same with new shape, keep random in the loop until its not same
+	while(recordID == id){ 
+		id = Math.floor( Math.random() * shapes.length);
+	}
+	recordID = id; //to assign new shape id into recordID
+    var shape = shapes[ id ]; // maintain id for shape chosen
 
     current = [];
     for ( var y = 0; y < 4; ++y ) {
@@ -75,10 +81,16 @@ function tick() {
         freeze();
         clearLines();
         if (lose) {
-            newGame();
-            return false;
+			if(confirm('Game Over!\nDo you want to play again?')){
+				newGame();
+			} else{
+				clearInterval(interval);
+				init();
+				homeScreen();
+			}
+			//return false;
         }
-        newShape();
+		newShape();
     }
 }
 
@@ -187,7 +199,28 @@ function newGame() {
     init();
     newShape();
     lose = false;
-    interval = setInterval( tick, 250 );
+    interval = setInterval( tick, 25 );
+}
+//function to create button when it is clicked the game will start
+function createHomeStartButton(){
+	
+	// 1. Create the button
+	var button = document.createElement("button");
+	button.innerHTML = "Start Game";
+
+	// 2. Append somewhere
+	var body = document.getElementsByTagName("body")[0];
+	body.appendChild(button);
+
+	// 3. Add event handler
+	button.addEventListener ("click", function() {
+	alert("Enjoy The Game");
+	newGame();
+	body.removeChild(button);
+	});
+}
+function homeScreen(){
+	createHomeStartButton();
 }
 
-newGame();
+homeScreen();
