@@ -5,6 +5,8 @@ Description: This file is the code make the program run.
 ***********************************/
 
 //variable
+var score = 0;
+document.getElementById('score').innerHTML = score;
 var bgMusic;
 var clSoundEfct;
 var score = 0;
@@ -83,6 +85,8 @@ function tick() {
 	else if(currentY == -1)
 	{
 		if(confirm('Game Over!\nDo you want to play again?')){
+			score = 0;
+			document.getElementById('score').innerHTML = score;
 				newGame();
 			} else{
 				clearInterval(interval);
@@ -96,6 +100,8 @@ function tick() {
         clearLines();
         if (lose) {
 			if(confirm('Game Over!\nDo you want to play again?')){
+				score = 0;
+				document.getElementById('score').innerHTML = score;
 				newGame();
 			} else{
 				clearInterval(interval);
@@ -146,7 +152,7 @@ function clearLines() {
             clearLineSound();
             document.getElementById( 'clearsound' ).play();
 			score += 20;
-			document.getElementById('score').innerHTML = "<span style='color:#FF0000'>" + score + "</span>";
+			document.getElementById('score').innerHTML = score;
             for ( var yy = y; yy > 0; --yy ) {
                 for ( var x = 0; x < COLS; ++x ) {
                     board[ yy ][ x ] = board[ yy - 1 ][ x ];
