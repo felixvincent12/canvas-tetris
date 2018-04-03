@@ -13,6 +13,7 @@ key code on a standard keyboard:
 *********************************/
 document.body.onkeydown = function( e ) {
     var keys = {
+		32: 'space',
         37: 'left',
         39: 'right',
         40: 'down',

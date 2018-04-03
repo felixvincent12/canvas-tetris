@@ -58,7 +58,7 @@ function newShape() {
     }
     // position where the shape will evolve
     currentX = 5;
-    currentY = 0;
+    currentY = -1;
 }
 
 // clears the board
@@ -75,6 +75,17 @@ function init() {
 function tick() {
     if ( valid( 0, 1 ) ) {
         ++currentY;
+    }
+	//reach maximum height, end game
+	else if(currentY == -1)
+	{
+		if(confirm('Game Over!\nDo you want to play again?')){
+				newGame();
+			} else{
+				clearInterval(interval);
+				init();
+				homeScreen();
+			}
     }
     // if the element settled
     else {
@@ -156,6 +167,12 @@ function keyPress( key ) {
             if ( valid( 0, 1 ) ) {
                 ++currentY;
             }
+            break;
+		case 'space':
+				while (valid( 0, 1 ))
+				{
+					++currentY;
+				}
             break;
         case 'rotate':
             var rotated = rotate( current );
