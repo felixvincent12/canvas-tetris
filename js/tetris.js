@@ -5,6 +5,7 @@ Description: This file is the code make the program run.
 ***********************************/
 
 //variable
+var score = 0;
 var COLS = 10, ROWS = 20;
 var board = [];
 var lose;
@@ -141,6 +142,8 @@ function clearLines() {
         }
         if ( rowFilled ) {
             document.getElementById( 'clearsound' ).play();
+			score += 20;
+			document.getElementById('score').innerHTML = "<span style='color:#FF0000'>" + score + "</span>";
             for ( var yy = y; yy > 0; --yy ) {
                 for ( var x = 0; x < COLS; ++x ) {
                     board[ yy ][ x ] = board[ yy - 1 ][ x ];
