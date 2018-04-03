@@ -5,6 +5,8 @@ Description: This file is the code make the program run.
 ***********************************/
 
 //variable
+var bgMusic;
+var clSoundEfct;
 var score = 0;
 var COLS = 10, ROWS = 20;
 var board = [];
@@ -141,6 +143,7 @@ function clearLines() {
             }
         }
         if ( rowFilled ) {
+            clearLineSound();
             document.getElementById( 'clearsound' ).play();
 			score += 20;
 			document.getElementById('score').innerHTML = "<span style='color:#FF0000'>" + score + "</span>";
@@ -221,6 +224,41 @@ function newGame() {
     lose = false;
     interval = setInterval( tick, 250 );
 }
+
+function sound(src){
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.setAttribute("class", "bgMusic");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    };
+    this.muted = function(){
+        this.sound.muted = true;
+    };
+    this.resume = function(){
+        this.sound.muted = false;
+    }
+}
+
+function playingMusic(){
+    if (document.getElementsByClassName('bgMusic').length == 0) {
+        bgMusic = new sound("sound/backgroundMusic.mp3");
+    }
+    bgMusic.play();
+}
+
+function clearLineSound(){
+    clSoundEfct = new sound("sound/clearLine.mp3");
+    clSoundEfct.play();
+}
+
+setInterval(function(){playingMusic();}, 1000);
+
+
 //function to create button when it is clicked the game will start
 function createHomeStartButton(){
 	
@@ -244,3 +282,18 @@ function homeScreen(){
 }
 
 homeScreen();
+$(document).ready(function(){
+    var flag = true;
+    $('#tMusic').click(function(){
+        if (flag === true) {
+            bgMusic.muted();
+            clSoundEfct.muted();
+            flag = false;
+        }
+        else {
+            bgMusic.resume();
+            clSoundEfct.resume();
+            flag = true;
+        }   
+    });
+});
