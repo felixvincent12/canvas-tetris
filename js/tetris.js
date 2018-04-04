@@ -149,8 +149,8 @@ function clearLines() {
             }
         }
         if ( rowFilled ) {
-            clearLineSound();
-            document.getElementById( 'clearsound' ).play();
+            clSoundEfct.play();
+            //document.getElementById( 'clearsound' ).play();
 			score += 20;
 			document.getElementById('score').innerHTML = score;
             for ( var yy = y; yy > 0; --yy ) {
@@ -237,6 +237,10 @@ function sound(src){
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.setAttribute("class", "bgMusic");
+    if(src ==="sound/backgroundMusic.mp3")
+        this.sound.setAttribute("class","bgMusic");
+    else if(src==="sound/clearLine.mp3")
+        this.sound.setAttribute("class","clearSound");
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
     this.play = function(){
@@ -258,8 +262,9 @@ function playingMusic(){
 }
 
 function clearLineSound(){
-    clSoundEfct = new sound("sound/clearLine.mp3");
-    clSoundEfct.play();
+    if(document.getElementsByClassName("bgMusic").length === 0){
+        clSoundEfct = new sound("sound/clearLine.mp3");
+    }
 }
 
 setInterval(function(){playingMusic();}, 1000);
@@ -289,6 +294,7 @@ function homeScreen(){
 
 homeScreen();
 $(document).ready(function(){
+    clearLineSound();
     var flag = true;
     $('#tMusic').click(function(){
         if (flag === true) {
