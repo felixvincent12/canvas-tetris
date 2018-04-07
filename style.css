@@ -5,7 +5,7 @@ canvas {
 }
 /*css for game home button screen*/
 body {
-  padding: 20px;
+  padding: 30px;
   	background: #141414;
 }
 button {
@@ -15,6 +15,7 @@ button {
   padding: 0 40px;
   background: salmon;
   border: none;
+  margin-left: 10px;
 }
 button:hover {
   background: lightsalmon;
@@ -24,11 +25,15 @@ button:hover {
     margin: auto;
     width: 40%;
     border: 3px solid #73AD21;
-    padding: 10px;
+   padding: 10px;
 }
 
 .display{
     display:inline-block;
+}
+#btnposition{
+	position: absolute;
+	top: 570px;
 }
 
 #nextBlock{

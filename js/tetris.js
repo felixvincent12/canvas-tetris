@@ -125,18 +125,18 @@ function newShape(initialID) {
 function createHomeStartButton() {
 	'use strict';
 	// 1. Create the button
-	var button = document.createElement("button"), body;
+	var button = document.createElement("button"), samediv;
 	button.innerHTML = "Start Game";
 
 	// 2. Append somewhere
-	body = document.getElementsByTagName("body")[0];
-	body.appendChild(button);
+	samediv = document.getElementById("btnposition");
+	samediv.appendChild(button);
 
 	// 3. Add event handler
 	button.addEventListener("click", function () {
 	    window.alert("Enjoy The Game");
 	    newGame();
-	    body.removeChild(button);
+	    samediv.removeChild(button);
 	});
 }
 function homeScreen() {
@@ -276,6 +276,9 @@ function keyPress(key) {
             current = rotated;
         }
         break;
+	case 'shift':
+		alert("store block");
+		break;
     }
 }
 
