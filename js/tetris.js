@@ -9,8 +9,8 @@ Description: This file is the code make the program run.
 
 var bgMusic;
 var clSoundEfct;
+var getname = "Player 1";
 var score = 0;
-document.getElementById('score').innerHTML = score;
 var COLS = 10, ROWS = 20;
 var board = [];
 var lose;
@@ -134,7 +134,9 @@ function createHomeStartButton() {
 
 	// 3. Add event handler
 	button.addEventListener("click", function () {
-	    window.alert("Enjoy The Game");
+	    getname = prompt("Please enter your name:", getname);
+		document.getElementById("nameoutput").innerHTML = getname;
+		document.getElementById("score").innerHTML = score;
 	    newGame();
 	    samediv.removeChild(button);
 	});
@@ -192,10 +194,45 @@ function tick() {
     } else if (currentY === -1) {
         //reach maximum height, end game
 		if (window.confirm('Game Over!\nDo you want to play again?')) {
+			var xHRObject = false;
+			if (window.XMLHttpRequest)
+			{
+					xHRObject = new XMLHttpRequest();
+			}
+			else if (window.ActiveXObject)
+			{
+				xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
+			}
+			xHRObject.onreadystatechange = function(){
+			if(xHRObject.readyState == 4 && xHRObject.status == 200){
+			document.getElementById("score").innerHTML = 0;
+			}
+			}
+			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
+			xHRObject.send(null);	
 			score = 0;
 			document.getElementById('score').innerHTML = score;
             newGame();
         } else {
+			var xHRObject = false;
+			if (window.XMLHttpRequest)
+			{
+					xHRObject = new XMLHttpRequest();
+			}
+			else if (window.ActiveXObject)
+			{
+				xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
+			}
+			xHRObject.onreadystatechange = function(){
+			if(xHRObject.readyState == 4 && xHRObject.status == 200){
+			document.getElementById("score").innerHTML = "";
+			document.getElementById("nameoutput").innerHTML = "";
+			}
+			}
+			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
+			xHRObject.send(null);
+			score = 0;
+			getname = "";
             clearInterval(interval);
             init();
             homeScreen();
@@ -206,10 +243,44 @@ function tick() {
         clearLines();
         if (lose) {
 			if (window.confirm('Game Over!\nDo you want to play again?')) {
+				var xHRObject = false;
+				if (window.XMLHttpRequest)
+				{
+					xHRObject = new XMLHttpRequest();
+				}
+				else if (window.ActiveXObject)
+				{
+					xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
+				}	
+				xHRObject.onreadystatechange = function(){
+					if(xHRObject.readyState == 4 && xHRObject.status == 200){
+						document.getElementById("score").innerHTML = 0;
+					}
+				}
+				xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
+				xHRObject.send(null);	
 				score = 0;
-				document.getElementById('score').innerHTML = score;
 				newGame();
 			} else {
+				var xHRObject = false;
+				if (window.XMLHttpRequest)
+				{
+					xHRObject = new XMLHttpRequest();
+				}
+				else if (window.ActiveXObject)
+				{
+					xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
+				}
+				xHRObject.onreadystatechange = function(){
+					if(xHRObject.readyState == 4 && xHRObject.status == 200){
+						document.getElementById("score").innerHTML = "";
+						document.getElementById("nameoutput").innerHTML = "";
+					}
+				}
+				xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
+				xHRObject.send(null);
+				score = 0;
+				getname = "";
 				clearInterval(interval);
 				init();
 				homeScreen();
@@ -343,3 +414,26 @@ $(document).ready(function () {
         }  
     });
 });
+
+
+function printScore(){
+			var xHRObject = false;
+			if (window.XMLHttpRequest)
+			{
+					xHRObject = new XMLHttpRequest();
+			}
+			else if (window.ActiveXObject)
+			{
+				xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
+			}
+			xHRObject.onreadystatechange = function(){
+			if(xHRObject.readyState == 4 && xHRObject.status == 200){
+			document.getElementById("printscore").innerHTML = xHRObject.responseText;
+			}
+			}
+			xHRObject.open('GET',"getGame.php",true);
+			xHRObject.send(null);	
+}
+
+window.onload = printScore();
+var reload = setInterval(printScore,10000);
