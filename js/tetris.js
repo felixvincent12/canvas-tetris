@@ -19,6 +19,7 @@ var current; // current moving shape
 var currentX, currentY; // position of current shape
 var recordID; //variable to record shape
 var next;
+var countForLineTrap = 0;
 //create the shape such as square 
 var shapes = [
     [1, 1, 1, 1],
@@ -30,7 +31,7 @@ var shapes = [
     [0, 1, 0, 0, 1, 1, 1 ]
 ];
 var colors = [
-    'cyan', 'orange', 'blue', 'yellow', 'red', 'green', 'purple'
+    'cyan', 'orange', 'blue', 'yellow', 'red', 'green', 'purple', 'grey'
 ];
 
 // creates a new 4x4 shape in global variable 'current'
@@ -58,6 +59,32 @@ function nextShape() {
         }
     }
     return recordID;
+}
+//function for line trap
+function LineTrap(){
+	var x, y;
+	var randCol = Math.floor(Math.random() * (COLS-1));
+	pushBlocksUp();
+	for (y=0; y<COLS; y++){
+			 x=ROWS - 1;
+			 if(randCol != y){
+				 board[x][y] = 8;
+			 }
+	}
+	countForLineTrap = 0;
+}
+//push the tetrominoes up when the line trap is called
+function pushBlocksUp(){
+	var x,y;
+	for(x=1; x<ROWS; x++){
+		for(y=0; y<COLS; y++){
+			if(x == (ROWS-1)){
+				board[x][y] = 0;
+			}else{
+				board[x][y] = board[x+1][y];
+			}
+		}
+	}
 }
 
 // clears the board
@@ -197,16 +224,16 @@ function tick() {
 			var xHRObject = false;
 			if (window.XMLHttpRequest)
 			{
-					xHRObject = new XMLHttpRequest();
+				xHRObject = new XMLHttpRequest();
 			}
 			else if (window.ActiveXObject)
 			{
 				xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
 			}
 			xHRObject.onreadystatechange = function(){
-			if(xHRObject.readyState == 4 && xHRObject.status == 200){
-			document.getElementById("score").innerHTML = 0;
-			}
+				if(xHRObject.readyState == 4 && xHRObject.status == 200){
+					document.getElementById("score").innerHTML = 0;
+				}
 			}
 			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
 			xHRObject.send(null);	
@@ -217,17 +244,17 @@ function tick() {
 			var xHRObject = false;
 			if (window.XMLHttpRequest)
 			{
-					xHRObject = new XMLHttpRequest();
+				xHRObject = new XMLHttpRequest();
 			}
 			else if (window.ActiveXObject)
 			{
 				xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
 			}
 			xHRObject.onreadystatechange = function(){
-			if(xHRObject.readyState == 4 && xHRObject.status == 200){
-			document.getElementById("score").innerHTML = "";
-			document.getElementById("nameoutput").innerHTML = "";
-			}
+				if(xHRObject.readyState == 4 && xHRObject.status == 200){
+					document.getElementById("score").innerHTML = "";
+					document.getElementById("nameoutput").innerHTML = "";
+				}
 			}
 			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
 			xHRObject.send(null);
@@ -288,6 +315,10 @@ function tick() {
 			//return false;
         }
 		newShape();
+		countForLineTrap += 1;
+		if (countForLineTrap == 5){
+			LineTrap();
+		}
     }
 }
 
@@ -300,6 +331,7 @@ function newGame() {
     nextShapeId = nextShape();
     newShape(nextShapeId);
     lose = false;
+	countForLineTrap = 0;
     interval = setInterval(tick, 250);
 }
 
@@ -347,9 +379,6 @@ function keyPress(key) {
             current = rotated;
         }
         break;
-	case 'shift':
-		alert("store block");
-		break;
     }
 }
 
