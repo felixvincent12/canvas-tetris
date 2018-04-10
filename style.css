@@ -2,11 +2,12 @@ canvas {
     display: block;
     margin: auto;
     border: 1px solid white;
+    background: #141414;
 }
 /*css for game home button screen*/
 body {
   padding: 30px;
-  	background: #141414;
+  	background: #696969;
 }
 button {
   margin-top: 40px;

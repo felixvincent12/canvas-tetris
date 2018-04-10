@@ -73,6 +73,32 @@ function nrender() {
     }
 }
 
+function drawboardline()
+{   
+        var c = document.getElementById("mainscreen");
+        var ctx = c.getContext("2d");
+        var i = 0;
+        var j = 0;
+        var x= 0;
+        var y =0;
+        for (i=0; i<10; i++)
+        {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 600);
+            ctx.stroke();
+            x+=30;
+        }
+        for (j=0; j<20; j++)
+        {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(300, y);
+            ctx.stroke();
+            y+=30;
+        }
+}
 //repeat the execution function in 30 milliseconds
 setInterval(render, 30);
 setInterval(nrender, 30);
+setInterval(drawboardline,1);
