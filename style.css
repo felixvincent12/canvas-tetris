@@ -40,3 +40,9 @@ button:hover {
 #nextBlock{
     margin-bottom:633%;
 }
+
+#storeBlockbox{
+	position: fixed;
+	top: 180px;
+	left: 781px;
+}
