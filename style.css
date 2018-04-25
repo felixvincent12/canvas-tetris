@@ -40,3 +40,9 @@ button:hover {
 #nextBlock{
     margin-bottom:633%;
 }
+
+#lvlposition{
+	position: absolute;
+	top: 150px;
+	font-size: 40px;
+}
