@@ -20,6 +20,7 @@ var currentX, currentY; // position of current shape
 var recordID; //variable to record shape
 var next;
 var countForLineTrap = 0;
+var level = 1;
 //create the shape such as square 
 var shapes = [
     [1, 1, 1, 1],
@@ -164,6 +165,7 @@ function createHomeStartButton() {
 	    getname = prompt("Please enter your name:", getname);
 		document.getElementById("nameoutput").innerHTML = getname;
 		document.getElementById("score").innerHTML = score;
+		document.getElementById("levelnum").innerHTML = level;
 	    newGame();
 	    samediv.removeChild(button);
 	});
