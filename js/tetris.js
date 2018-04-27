@@ -21,6 +21,7 @@ var recordID; //variable to record shape
 var next;
 var countForLineTrap = 0;
 var level = 1;
+var expected_score = 100;
 //create the shape such as square 
 var shapes = [
     [1, 1, 1, 1],
@@ -204,6 +205,7 @@ function clearLines() {
             clSoundEfct.play();
             //document.getElementById( 'clearsound' ).play();
 			score += 20;
+			levelfunc(score);
 			document.getElementById('score').innerHTML = score;
             for (yy = y; yy > 0; yy -= 1) {
                 for (x = 0; x < COLS; x += 1) {
@@ -213,6 +215,16 @@ function clearLines() {
             y += 1;
         }
     }
+}
+
+function levelfunc(current_score)
+{	
+	if(current_score >= expected_score){
+		level += 1;
+		expected_score += 100;
+		document.getElementById("levelnum").innerHTML = level;
+	}
+	
 }
 
 // keep the element moving down, creating new shapes and clearing lines
