@@ -2,25 +2,28 @@
 <html>
     <head>
         <title>HTML5 Tetris</title>
-        <link rel='stylesheet' href='style.css' />
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel='stylesheet' href='css/style.css' />
     </head>
     <body>
-        <!--<audio id="clearsound" src="sound/pop.ogg" preload="auto"></audio>-->
         <div class="container">
             <div class="display"><canvas id="mainscreen" width='300' height='600'></canvas></div>
             <div class="display">
 				<div><canvas id="nextBlock" width='80' height='80'></canvas></div>
-				<div id="lvlposition">Level:<span id="levelnum"></span></div>
 			</div>			
         </div>
-		<div style='color:#FF0000; margin-top: 0px; position: absolute;top: 100px;'><span id="printscore"></span></div>
-        <div style='color:#FF0000; margin-top: 0px; position: absolute;top: 500px;'><font size="20">Name: <span id="nameoutput"></span><br/>Score: <span id="score"></span></font></div>
+        
+		
+        <div class="shwName">Name: <span id="nameoutput"></span><br/>Score: <span id="score"></span></div>
+        <div id="lvlposition">Level:<span id="levelnum"></span></div>
         <div id="btnposition"><button id="tMusic" type="button">Mute/Unmute</button></div>
+        <div class="scoreTable" ><span id="printscore"></span></div>
         <script src="js/jquery.min.js"></script>
         <script src='js/tetris.js'></script>
         <script src='js/controller.js'></script>
         <script src='js/render.js'></script>
         <script src="js/cookies.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         
     </body>
 </html>
