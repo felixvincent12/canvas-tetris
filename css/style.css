@@ -13,6 +13,7 @@ body{
 }
 
 /*css for game home button screen*/
+
 /*
 button {
   margin-top: 40px;
@@ -28,6 +29,7 @@ button:hover {
   background: lightsalmon;
 }
 */
+
 
 .container{
     margin: auto;
@@ -53,18 +55,19 @@ button:hover {
 
 #lvlposition{
 	position: absolute;
-    top: 550px;
+    top: 150px;
 }
 
 
 .scoreTable{
     margin-top: 0px;
     position: absolute;
-    top: 100px;
+    top: 10px;
+    left: 1300px
 }
 
 .shwName{
     margin-top: 0px;
     position: absolute;
-    top: 500px;
+    top: 10px;
 }

@@ -13,11 +13,20 @@
 			</div>			
         </div>
         
-		
-        <div class="shwName">Name: <span id="nameoutput"></span><br/>Score: <span id="score"></span></div>
-        <div id="lvlposition">Level:<span id="levelnum"></span></div>
-        <div id="btnposition"><button id="tMusic" type="button">Mute/Unmute</button></div>
+		<!-- show name and score output-->
+        <div class="shwName"><h1>Name: <span id="nameoutput"></span></h1><h1>Score: <span id="score"></span></h1></div>
+        
+        <!-- show level-->
+        <div id="lvlposition"><h2>Level:<span id="levelnum"></span></h2></div>
+        
+        <!-- button for mute music-->
+        <div id="btnposition"><button id="tMusic" type="button" class="btn btn-primary btn-md">Mute/Unmute</button></div>
+        
+        <!-- show score table-->
         <div class="scoreTable" ><span id="printscore"></span></div>
+        
+        
+        <!-- declaration -->
         <script src="js/jquery.min.js"></script>
         <script src='js/tetris.js'></script>
         <script src='js/controller.js'></script>
