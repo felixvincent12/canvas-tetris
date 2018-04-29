@@ -227,6 +227,13 @@ function levelfunc(current_score)
 	
 }
 
+function resetLevel()
+{
+	level = 1;
+	expected_score = 100;
+	document.getElementById("levelnum").innerHTML = level;
+}
+
 // keep the element moving down, creating new shapes and clearing lines
 function tick() {
     'use strict';
@@ -247,6 +254,7 @@ function tick() {
 			xHRObject.onreadystatechange = function(){
 				if(xHRObject.readyState == 4 && xHRObject.status == 200){
 					document.getElementById("score").innerHTML = 0;
+					resetLevel();
 				}
 			}
 			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
@@ -347,6 +355,7 @@ function newGame() {
     lose = false;
 	countForLineTrap = 0;
     interval = setInterval(tick, 250);
+	resetLevel();
 }
 
 // returns rotates the rotated shape 'current' perpendicularly anticlockwise
