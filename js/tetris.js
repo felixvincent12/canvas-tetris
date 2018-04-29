@@ -193,7 +193,7 @@ function freeze() {
 // check if any lines are filled and clear them
 function clearLines() {
     'use strict';
-    var x, y, rowFilled, yy;
+    var x, y, rowFilled, yy, count = 0;
     for (y = ROWS - 1; y >= 0; y -= 1) {
         rowFilled = true;
         for (x = 0; x < COLS; x += 1) {
@@ -205,7 +205,8 @@ function clearLines() {
         if (rowFilled) {
             clSoundEfct.play();
             //document.getElementById( 'clearsound' ).play();
-			score += 20;
+            count += 1;
+            score += Math.pow(2, count - 1) * 20;
 			levelfunc(score);
 			document.getElementById('score').innerHTML = score;
             for (yy = y; yy > 0; yy -= 1) {
