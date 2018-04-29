@@ -22,6 +22,7 @@ var next;
 var countForLineTrap = 0;
 var level = 1;
 var expected_score = 100;
+var keyboardSettings = false;
 //create the shape such as square 
 var shapes = [
     [1, 1, 1, 1],
@@ -452,8 +453,15 @@ setInterval(function () {'use strict'; playingMusic(); }, 1000);
 homeScreen();
 $(document).ready(function () {
     'use strict';
+    
     clearLineSound();
     var flag = true;
+    $('#controlChkBox').change(function(e){
+        if ($('#controlChkBox').is(":checked") == true)
+            keyboardSettings = true;
+        else
+            keyboardSettings = false;
+    });
     $('#tMusic').click(function () {
         if (flag === true) {
             bgMusic.muted();
