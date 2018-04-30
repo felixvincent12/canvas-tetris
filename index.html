@@ -24,6 +24,16 @@
             </label>
             <span style="font-size: 20px;position:relative;float:right;top:3px;margin-right:90px;">WASD &#38 Enter Bar</span>
             </div><br />
+            <!-- checkbox for mute music-->
+            <div>
+            <span style="font-size: 20px;position:relative;float:left;top:3px;margin-right:5px;">Unmute </span>
+            <label style="margin-left: 160px;" class="switch">
+                <input id="tMusic" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span style="font-size: 20px;position:relative;float:right;top:3px;margin-right:90px;">Mute</span>
+            </div><br />
+<!--            <button id="tMusic" type="button" class="btn btn-info btn-md">Mute/Unmute</button>-->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -43,8 +53,7 @@
 		<!--gameover image-->
 		<div class="gameover"><img id="go" src="images/gameover.png" alt="Game Over"></div>
 		
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Settings</button>
+        
         
 		<!-- show name and score output-->
         <div class="shwName"><h1>Name: <span id="nameoutput"></span></h1><h1>Score: <span id="score"></span></h1></div>
@@ -52,11 +61,15 @@
         <!-- show level-->
         <div id="lvlposition"><h2>Level:<span id="levelnum"></span></h2></div>
         
-        <!-- button for mute music-->
-        <div id="btnposition">
-			<button id="tMusic" type="button" class="btn btn-primary btn-md">Mute/Unmute</button>
-			<button id="start" type="button" class="btn btn-primary btn-md">Start Game</button>	
-		</div>
+        <button id="start" type="button" class="btn btn-success btn-lg">Start Game</button>	
+        
+        
+        
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Settings</button>
+		
+        
+        
         
         <!-- show score table-->
         <div class="scoreTable" ><span id="printscore"></span></div>

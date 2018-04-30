@@ -414,22 +414,21 @@ $(document).ready(function () {
     'use strict';
     
     clearLineSound();
-    var flag = true;
+    
     $('#controlChkBox').change(function(e){
         if ($('#controlChkBox').is(":checked") == true)
             keyboardSettings = true;
         else
             keyboardSettings = false;
     });
-    $('#tMusic').click(function () {
-        if (flag === true) {
+    $('#tMusic').change(function () {
+        if ($('#tMusic').is(":checked") == true) {
             bgMusic.muted();
             clSoundEfct.muted();
-            flag = false;
+            
         } else {
             bgMusic.resume();
-            clSoundEfct.resume();
-            flag = true;
+            clSoundEfct.resume();     
         }  
     });
 });

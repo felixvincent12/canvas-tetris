@@ -149,3 +149,8 @@ input:checked + .slider:before {
     -webkit-transition: width linear 1s;
     transition: width linear 1s
 }
+
+#start{
+    position: absolute;
+    top: 250px;
+}
