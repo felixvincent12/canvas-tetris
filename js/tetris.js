@@ -156,6 +156,7 @@ function createHomeStartButton() {
 	'use strict';
 	// 1. Create the button
 	var button = document.createElement("button"), samediv;
+    button.setAttribute("class", "btn btn-success");
 	button.innerHTML = "Start Game";
 
 	// 2. Append somewhere

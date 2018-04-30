@@ -88,7 +88,7 @@ if(isset($name)&&isset($score)){
 	$last_four = $xml->xpath('//Player[last()-3]');
 	$last_five = $xml->xpath('//Player[last()-4]');
 
-	$table = '<font size = "20"><table class="score table table-condensed table-bordered" style="border: 5px solid black;"><tr><th>Name</th><th>Score</th></tr>';
+	$table = '<font size = "20"><table border="1" id="tableScore" class="score table table-condensed table-bordered" style="border: 5px solid black;"><tr><th>Name</th><th>Score</th></tr>';
 	
 	
 	$table .="<tr><td>".$last_one[0]->Name."</td><td>".$last_one[0]->Score."</td></tr>";
