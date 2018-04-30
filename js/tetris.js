@@ -6,7 +6,7 @@ Description: This file is the code make the program run.
 
 //variable
 //var score = 0;
-
+$('.gameover').hide();
 var bgMusic;
 var clSoundEfct;
 var getname = "Player 1";
@@ -151,32 +151,18 @@ function newShape(initialID) {
     currentY = 0;
 }
 
-//function to create button when it is clicked the game will start
-function createHomeStartButton() {
-	'use strict';
-	// 1. Create the button
-	var button = document.createElement("button"), samediv;
-    button.setAttribute("class", "btn btn-success");
-	button.innerHTML = "Start Game";
-
-	// 2. Append somewhere
-	samediv = document.getElementById("btnposition");
-	samediv.appendChild(button);
-
-	// 3. Add event handler
-	button.addEventListener("click", function () {
-	    getname = prompt("Please enter your name:", getname);
+//start game when start button is clicked
+$(document).ready(function(){
+	$('#start').click(function(){
+	$('.gameover').hide();
+ 	getname = prompt("Please enter your name:", getname);
 		document.getElementById("nameoutput").innerHTML = getname;
 		document.getElementById("score").innerHTML = score;
 		document.getElementById("levelnum").innerHTML = level;
-	    newGame();
-	    samediv.removeChild(button);
-	});
-}
-function homeScreen() {
-    'use strict';
-	createHomeStartButton();
-}
+    	newGame();
+			
+});
+});
 
 // stop shape at its position and fix it to board
 function freeze() {
@@ -244,7 +230,8 @@ function tick() {
         currentY += 1;
     } else if (currentY === -1) {
         //reach maximum height, end game
-		if (window.confirm('Game Over!\nDo you want to play again?')) {
+			$('.gameover').show();
+			$('.gameover').toggleClass('gameover-ADDED');
 			var xHRObject = false;
 			if (window.XMLHttpRequest)
 			{
@@ -261,41 +248,24 @@ function tick() {
 				}
 			}
 			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
-			xHRObject.send(null);	
-			score = 0;
-			document.getElementById('score').innerHTML = score;
-            newGame();
-        } else {
-			var xHRObject = false;
-			if (window.XMLHttpRequest)
-			{
-				xHRObject = new XMLHttpRequest();
-			}
-			else if (window.ActiveXObject)
-			{
-				xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
-			}
-			xHRObject.onreadystatechange = function(){
-				if(xHRObject.readyState == 4 && xHRObject.status == 200){
-					document.getElementById("score").innerHTML = "";
-					document.getElementById("nameoutput").innerHTML = "";
-					document.getElementById("levelnum").innerHTML = "";
-				}
-			}
-			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
 			xHRObject.send(null);
-			score = 0;
-			getname = "";
-            clearInterval(interval);
+		 	clearInterval(interval);
             init();
-            homeScreen();
-        }
+			$(document).ready(function(){
+ 			$('.gameover').click(function(){
+  			score = 0;
+			document.getElementById('score').innerHTML = score;
+			newGame();	
+ 			});
+			}); 
+        
     } else {
         // if the element settled
         freeze();
         clearLines();
         if (lose) {
-			if (window.confirm('Game Over!\nDo you want to play again?')) {
+				$('.gameover').show();
+				$('.gameover').toggleClass('gameover-ADDED');
 				var xHRObject = false;
 				if (window.XMLHttpRequest)
 				{
@@ -311,48 +281,34 @@ function tick() {
 					}
 				}
 				xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
-				xHRObject.send(null);	
-				score = 0;
-				newGame();
-			} else {
-				var xHRObject = false;
-				if (window.XMLHttpRequest)
-				{
-					xHRObject = new XMLHttpRequest();
-				}
-				else if (window.ActiveXObject)
-				{
-					xHRObject = new ActiveXObject("Microsoft.XMLHTTP");	
-				}
-				xHRObject.onreadystatechange = function(){
-					if(xHRObject.readyState == 4 && xHRObject.status == 200){
-						document.getElementById("score").innerHTML = "";
-						document.getElementById("nameoutput").innerHTML = "";
-						document.getElementById("levelnum").innerHTML = "";
-					}
-				}
-				xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
 				xHRObject.send(null);
-				score = 0;
-				getname = "";
-				clearInterval(interval);
-				init();
-				homeScreen();
+			 	clearInterval(interval);
+            	init();
+				 $(document).ready(function(){
+ 				$('.gameover').click(function(){
+  				score = 0;
+				document.getElementById('score').innerHTML = score;
+				newGame();	
+ 				});
+				}); 
+			
+
 			}
 			//return false;
-        }
 		newShape();
 		countForLineTrap += 1;
 		if (countForLineTrap == 5){
 			LineTrap();
 		}
-    }
+	}
 }
 
 //Start a new game when game over
 function newGame() {
     'use strict';
     var nextShapeId;
+	$('.gameover').hide();
+	$('.gameover').removeClass("gameover-ADDED");
     clearInterval(interval);
     init();
     nextShapeId = nextShape();
@@ -454,7 +410,6 @@ function clearLineSound() {
 
 setInterval(function () {'use strict'; playingMusic(); }, 1000);
 
-homeScreen();
 $(document).ready(function () {
     'use strict';
     
