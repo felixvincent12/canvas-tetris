@@ -154,3 +154,8 @@ input:checked + .slider:before {
     position: absolute;
     top: 250px;
 }
+
+#setting{
+    position: absolute;
+    top: 300px;
+}
