@@ -278,6 +278,7 @@ function tick() {
 				if(xHRObject.readyState == 4 && xHRObject.status == 200){
 					document.getElementById("score").innerHTML = "";
 					document.getElementById("nameoutput").innerHTML = "";
+					document.getElementById("levelnum").innerHTML = "";
 				}
 			}
 			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
@@ -326,6 +327,7 @@ function tick() {
 					if(xHRObject.readyState == 4 && xHRObject.status == 200){
 						document.getElementById("score").innerHTML = "";
 						document.getElementById("nameoutput").innerHTML = "";
+						document.getElementById("levelnum").innerHTML = "";
 					}
 				}
 				xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
