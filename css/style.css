@@ -130,3 +130,22 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.gameover {
+    position:absolute;
+    height:0px;
+    width:0px;
+    right:0;
+    left:0;
+    bottom:0;
+    top:0;
+    margin: auto; 
+    
+}
+
+.gameover-ADDED {
+    height:80%;
+    width:50%;
+    -webkit-transition: width linear 1s;
+    transition: width linear 1s
+}
