@@ -39,6 +39,10 @@
 				<div><canvas id="nextBlock" width='80' height='80'></canvas></div>
 			</div>			
         </div>
+		
+		<!--gameover image-->
+		<div class="gameover"><img id="go" src="images/gameover.png" alt="Game Over"></div>
+		
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Settings</button>
         
@@ -49,7 +53,10 @@
         <div id="lvlposition"><h2>Level:<span id="levelnum"></span></h2></div>
         
         <!-- button for mute music-->
-        <div id="btnposition"><button id="tMusic" type="button" class="btn btn-primary btn-md">Mute/Unmute</button></div>
+        <div id="btnposition">
+			<button id="tMusic" type="button" class="btn btn-primary btn-md">Mute/Unmute</button>
+			<button id="start" type="button" class="btn btn-primary btn-md">Start Game</button>	
+		</div>
         
         <!-- show score table-->
         <div class="scoreTable" ><span id="printscore"></span></div>
