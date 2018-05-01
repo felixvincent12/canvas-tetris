@@ -248,8 +248,6 @@ function tick() {
 			}
 			xHRObject.onreadystatechange = function(){
 				if(xHRObject.readyState == 4 && xHRObject.status == 200){
-					document.getElementById("score").innerHTML = 0;
-					resetLevel();
 				}
 			}
 			xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
@@ -258,6 +256,7 @@ function tick() {
             init();
 			$(document).ready(function(){
  			$('.gameover').click(function(){
+			resetLevel();
   			score = 0;
 			document.getElementById('score').innerHTML = score;
 			newGame();	
@@ -282,7 +281,6 @@ function tick() {
 				}	
 				xHRObject.onreadystatechange = function(){
 					if(xHRObject.readyState == 4 && xHRObject.status == 200){
-						document.getElementById("score").innerHTML = 0;
 					}
 				}
 				xHRObject.open('GET',"getGame.php?score=" + score + "&name=" + getname,true);
@@ -291,6 +289,7 @@ function tick() {
             	init();
 				 $(document).ready(function(){
  				$('.gameover').click(function(){
+				resetLevel();
   				score = 0;
 				document.getElementById('score').innerHTML = score;
 				newGame();	
