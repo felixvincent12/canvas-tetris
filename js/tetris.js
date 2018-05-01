@@ -23,6 +23,7 @@ var countForLineTrap = 0;
 var level = 1;
 var expected_score = 100;
 var keyboardSettings = false;
+var drop_speed = 350;
 //create the shape such as square 
 var shapes = [
     [1, 1, 1, 1],
@@ -159,6 +160,7 @@ $(document).ready(function(){
 		document.getElementById("nameoutput").innerHTML = getname;
 		document.getElementById("score").innerHTML = score;
 		document.getElementById("levelnum").innerHTML = level;
+		document.getElementById("start").blur();
     	newGame();
 			
 });
@@ -209,9 +211,12 @@ function clearLines() {
 function levelfunc(current_score)
 {	
 	if(current_score >= expected_score){
+		clearInterval(interval);
 		level += 1;
 		expected_score += 100;
 		document.getElementById("levelnum").innerHTML = level;
+		drop_speed -=10;
+		interval = setInterval(tick, drop_speed);
 	}
 	
 }
@@ -315,7 +320,7 @@ function newGame() {
     newShape(nextShapeId);
     lose = false;
 	countForLineTrap = 0;
-    interval = setInterval(tick, 250);
+    interval = setInterval(tick, drop_speed);
 	resetLevel();
 }
 
