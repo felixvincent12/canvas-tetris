@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML5 Tetris</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel='stylesheet' href='css/style.css' />
+    </head>
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Settings</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+            <span style="font-size: 20px;position:relative;float:left;top:3px;margin-right:5px;">Arrow Keys &#38 Space Bar</span>
+            <label style="margin-left: 10px;" class="switch">
+                <input id="controlChkBox" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span style="font-size: 20px;position:relative;float:right;top:3px;margin-right:90px;">WASD &#38 Enter Bar</span>
+            </div><br />
+            <!-- checkbox for mute music-->
+            <div>
+            <span style="font-size: 20px;position:relative;float:left;top:3px;margin-right:5px;">Unmute </span>
+            <label style="margin-left: 160px;" class="switch">
+                <input id="tMusic" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span style="font-size: 20px;position:relative;float:right;top:3px;margin-right:90px;">Mute</span>
+            </div><br />
+<!--            <button id="tMusic" type="button" class="btn btn-info btn-md">Mute/Unmute</button>-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    <body>
+        <div class="container">
+            <div class="display"><canvas id="mainscreen" width='300' height='600'></canvas></div>
+            <div class="display">
+				<div><canvas id="nextBlock" width='80' height='80'></canvas></div>
+			</div>			
+        </div>
+		
+		<!--gameover image-->
+		<div class="gameover"><img id="go" src="images/gameover.png" alt="Game Over"></div>
+		
+        
+        
+		<!-- show name and score output-->
+        <div class="shwName"><h1>Name: <span id="nameoutput"></span></h1><h1>Score: <span id="score"></span></h1></div>
+        
+        <!-- show level-->
+        <div id="lvlposition"><h2>Level:<span id="levelnum"></span></h2></div>
+        
+        <button id="start" type="button" class="btn btn-success btn-lg">Start Game</button>	
+        
+        
+        
+        <!-- Trigger the modal with a button -->
+        <button id="setting" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Settings</button>
+		
+        
+        
+        
+        <!-- show score table-->
+        <div class="scoreTable" ><span id="printscore"></span></div>
+        
+        
+        <!-- declaration -->
+        <script src="js/jquery.min.js"></script>
+        <script src='js/tetris.js'></script>
+        <script src='js/controller.js'></script>
+        <script src='js/render.js'></script>
+        <script src="js/cookies.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
+    </body>
+</html>
