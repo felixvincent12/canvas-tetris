@@ -1,0 +1,161 @@
+
+/*for the black background in gameboard*/
+canvas {
+    display: block;
+    margin: auto;
+    border: 3px solid black;
+    background: #141414;
+}
+
+/*background color*/
+body{
+    background-color: #FFDD8F;  
+}
+
+/*css for game home button screen*/
+
+/*
+button {
+  margin-top: 40px;
+  line-height: 60px;
+  font-weight: bold;
+  padding: 0 40px;
+  background: salmon;
+  border: none;
+  margin-left: 10px;
+}
+
+button:hover {
+  background: lightsalmon;
+}
+*/
+
+
+.container{
+    margin: auto;
+    width: 22%;
+    padding: 10px;
+    background-color: #E33D23;
+}
+
+.display{
+    display:inline-block;
+}
+/*
+#btnposition{
+	position: absolute;
+	top: 570px;
+}
+*/
+
+/*next block position*/
+#nextBlock{
+    margin-bottom:605%;
+}
+
+#lvlposition{
+	position: absolute;
+    top: 150px;
+}
+
+
+.scoreTable{
+    margin-top: 0px;
+    position: absolute;
+    top: 10px;
+    left: 1300px
+}
+
+.shwName{
+    margin-top: 0px;
+    position: absolute;
+    top: 10px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ff0000;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.gameover {
+    position:absolute;
+    height:0px;
+    width:0px;
+    right:0;
+    left:0;
+    bottom:0;
+    top:0;
+    margin: auto; 
+    
+}
+
+.gameover-ADDED {
+    height:80%;
+    width:50%;
+    -webkit-transition: width linear 1s;
+    transition: width linear 1s
+}
+
+#start{
+    position: absolute;
+    top: 250px;
+}
+
+#setting{
+    position: absolute;
+    top: 300px;
+}
