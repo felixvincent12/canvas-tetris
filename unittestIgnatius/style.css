@@ -1,0 +1,49 @@
+canvas {
+    display: block;
+    margin: auto;
+    border: 1px solid white;
+    background: #141414;
+}
+/*css for game home button screen*/
+body {
+  padding: 30px;
+  	background: #696969;
+}
+button {
+  margin-top: 40px;
+  line-height: 60px;
+  font-weight: bold;
+  padding: 0 40px;
+  background: salmon;
+  border: none;
+  margin-left: 10px;
+}
+button:hover {
+  background: lightsalmon;
+}
+
+.container{
+    margin: auto;
+    width: 40%;
+    border: 3px solid #73AD21;
+   padding: 10px;
+}
+
+.display{
+    display:inline-block;
+}
+#btnposition{
+	position: absolute;
+	top: 570px;
+}
+
+#nextBlock{
+    margin-bottom:633%;
+}
+
+#lvlposition{
+	position: absolute;
+	top: 150px;
+	font-size: 40px;
+	color: #FF0000;
+}
